@@ -14,6 +14,28 @@ const projects = [
     tools: ['Jira Service Management', 'JQL', 'Workflow automation', 'Testing & validation', 'SharePoint'],
     challenge: 'The intake process needed a more structured way to capture submissions, route work, track status, and make follow-up activities visible across the delivery lifecycle.',
     objectives: ['Translate process and stakeholder needs into testable use cases.', 'Support consistent workflow handling and task follow-up.', 'Improve traceability through documentation, validation, and reporting.'],
+    timeline: [
+  {
+    phase: '01',
+    title: 'Requirements & Discovery',
+    description: 'Reviewed the intake process, identified stakeholder needs, and documented 26 end-to-end use cases.'
+  },
+  {
+    phase: '02',
+    title: 'Workflow & Configuration',
+    description: 'Supported Jira Service Management workflow, field, status, and automation configuration.'
+  },
+  {
+    phase: '03',
+    title: 'Testing & Validation',
+    description: 'Supported test execution, workflow validation, defect coordination, and issue resolution.'
+  },
+  {
+    phase: '04',
+    title: 'Documentation & Readiness',
+    description: 'Prepared supporting documentation, monitoring views, and user/admin guidance for implementation readiness.'
+  }
+],
     approach: ['Documented 26 end-to-end use cases covering intake and workflow behaviour.', 'Supported configuration of issue fields, statuses, workflow rules, and automated follow-up tasks.', 'Used JQL and automation logic to support monitoring and overdue-item visibility.', 'Supported development testing, validation, defect coordination, and implementation readiness.'],
     deliverables: ['Use-case and requirements documentation', 'Workflow and automation documentation', 'JQL queries and monitoring views', 'Test notes, validation records, and user/admin guidance'],
     learning: 'The work reinforced the value of clear acceptance criteria, traceable requirements, and documentation that helps both users and administrators support a process after implementation.',
@@ -106,6 +128,22 @@ function ProjectModal({ project, onClose }) {
         <h2 id="modal-title">{project.title}</h2>
         <p className="modal-summary">{project.summary}</p>
         <CaseStudyVisual project={project} />
+        {project.timeline && (
+  <div className="case-study-section">
+    <h3>Project timeline</h3>
+    <div className="project-timeline">
+      {project.timeline.map((item) => (
+        <div className="timeline-item" key={item.phase}>
+          <span className="timeline-number">{item.phase}</span>
+          <div>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
         <div className="case-study-section"><h3>Business challenge</h3><p>{project.challenge}</p></div>
         <div className="case-study-section"><h3>Objectives</h3><ul className="detail-list">{project.objectives.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
         <div className="case-study-section"><h3>Approach & contribution</h3><ul className="detail-list">{project.approach.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
