@@ -305,6 +305,10 @@ function App() {
               <p className="featured-category">{projects[0].type}</p>
               <h3>{projects[0].title}</h3>
               <p className="featured-summary">{projects[0].summary}</p>
+              <div className="featured-impact">
+  <strong>{projects[0].outcome}</strong>
+  <span>{projects[0].outcomeLabel}</span>
+</div>
               <div className="featured-tags">{projects[0].tools.slice(0, 4).map((tool) => <span key={tool}>{tool}</span>)}</div>
               <button className="featured-button" onClick={() => setActiveProject(projects[0])}>Explore case study <ArrowUpRight size={18} /></button>
               <p className="featured-note"><ShieldCheck size={15} /> Sanitised case study; no confidential system screenshots or internal data.</p>
@@ -314,7 +318,20 @@ function App() {
               <span className="visual-caption">Conceptual visual · not an actual RBC system screenshot</span>
             </div>
           </article>
-          <div className="project-gallery">{projects.slice(1).map((project, index) => <article className="gallery-card" key={project.number}><div className={`gallery-visual gallery-visual-${index+1}`}><div className="gallery-window"><div className="gallery-window-head">{index === 0 ? 'COST ESTIMATION FRAMEWORK' : index === 1 ? 'ANNUAL FUND PROJECT PLAN' : 'AI ADOPTION ROADMAP'}</div>{index === 0 ? <><div className="mini-metric-row"><b>IAM</b><b>NETWORK</b><b>ENDPOINT</b><b>CYBEROPS</b></div><div className="mini-table"><i/><i/><i/><i/><i/></div></> : index === 1 ? <><div className="mini-timeline"><i/><i/><i/><i/><i/></div><div className="mini-kpi-row"><b>8 KPIs</b><b>FY25 → FY26</b></div></> : <><div className="roadmap-nodes"><i>READINESS</i><i>GOVERNANCE</i><i>PRIVACY</i><i>RISK</i></div><div className="mini-table"><i/><i/><i/></div></>}</div></div><div className="gallery-card-body"><p>{project.type}</p><h3>{project.title}</h3><span>{project.summary}</span><button className="details-link" onClick={() => setActiveProject(project)}>View case study <ArrowRight size={15}/></button></div></article>)}</div>
+          <div className="project-gallery">{projects.slice(1).map((project, index) => <article className="gallery-card" key={project.number}><div className={`gallery-visual gallery-visual-${index+1}`}><div className="gallery-window"><div className="gallery-window-head">{index === 0 ? 'COST ESTIMATION FRAMEWORK' : index === 1 ? 'ANNUAL FUND PROJECT PLAN' : 'AI ADOPTION ROADMAP'}</div>{index === 0 ? <><div className="mini-metric-row"><b>IAM</b><b>NETWORK</b><b>ENDPOINT</b><b>CYBEROPS</b></div><div className="mini-table"><i/><i/><i/><i/><i/></div></> : index === 1 ? <><div className="mini-timeline"><i/><i/><i/><i/><i/></div><div className="mini-kpi-row"><b>8 KPIs</b><b>FY25 → FY26</b></div></> : <><div className="roadmap-nodes"><i>READINESS</i><i>GOVERNANCE</i><i>PRIVACY</i><i>RISK</i></div><div className="mini-table"><i/><i/><i/></div></>}</div></div><div className="gallery-card-body">
+  <p>{project.type}</p>
+  <h3>{project.title}</h3>
+  <span>{project.summary}</span>
+
+  <div className="gallery-impact">
+    <strong>{project.outcome}</strong>
+    <span>{project.outcomeLabel}</span>
+  </div>
+
+  <button className="details-link" onClick={() => setActiveProject(project)}>
+    View case study <ArrowRight size={15}/>
+  </button>
+</div></article>)}</div>
           <p className="project-disclaimer"><ShieldCheck size={16} /> Visuals are illustrative representations created for this portfolio, not screenshots of internal systems or confidential project artefacts.</p>
         </section>
         <section className="skills-section" id="skills"><div className="section-wrap"><div className="section-heading section-heading-wide"><p className="eyebrow">04 / CAPABILITIES</p><h2>How I help teams <span>move forward.</span></h2></div><div className="skills-grid">{skills.map((group, index) => <article className="skill-card" key={group.title}><span className="skill-index">0{index + 1}</span><h3>{group.title}</h3><div className="skill-items">{group.items.map((item) => <span key={item}>{item}</span>)}</div></article>)}</div><p className="skills-footnote">Skills reflect my education and experience; tool proficiency varies by area and project.</p></div></section>

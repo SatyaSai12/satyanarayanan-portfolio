@@ -308,3 +308,56 @@
     grid-template-columns: 1fr;
   }
 }
+/* Project impact highlights */
+.featured-impact,
+.gallery-impact {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 18px;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.featured-impact strong {
+  color: var(--accent);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.gallery-impact strong {
+  color: var(--accent);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.featured-impact span,
+.gallery-impact span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.gallery-impact {
+  margin-top: 14px;
+  padding: 11px 13px;
+}
+
+@media (max-width: 600px) {
+  .featured-impact {
+    padding: 11px 12px;
+  }
+
+  .featured-impact strong {
+    font-size: 24px;
+  }
+
+  .gallery-impact strong {
+    font-size: 19px;
+  }
+}
