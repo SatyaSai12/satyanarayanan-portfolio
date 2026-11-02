@@ -213,7 +213,22 @@ function ProjectModal({ project, onClose }) {
         <div className="case-study-section"><h3>Business challenge</h3><p>{project.challenge}</p></div>
         <div className="case-study-section"><h3>Objectives</h3><ul className="detail-list">{project.objectives.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
         <div className="case-study-section"><h3>Approach & contribution</h3><ul className="detail-list">{project.approach.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
-        <div className="case-study-section"><h3>Key deliverables</h3><ul className="detail-list">{project.deliverables.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
+        <div className="case-study-section">
+  <h3>Key deliverables</h3>
+  <div className="deliverables-grid">
+    {project.deliverables.map((item, index) => (
+      <div className="deliverable-card" key={item}>
+        <span className="deliverable-number">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <div className="deliverable-content">
+          <Check size={17} />
+          <span>{item}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
         <div className="case-study-section"><h3>What I learned</h3><p>{project.learning}</p></div>
         <div className="modal-tools">{project.tools.map((tool) => <span className="tag" key={tool}>{tool}</span>)}</div>
         <p className="confidentiality-note"><ShieldCheck size={16} /> {project.note}</p>
