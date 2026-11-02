@@ -48,6 +48,28 @@ const projects = [
     tools: ['Requirements analysis', 'Microsoft Excel', 'Data validation', 'Calculation testing', 'Documentation'],
     challenge: 'Technology integration estimates can involve different input types and assumptions. The project explored a more structured approach to collecting and comparing cost factors for M&A scenarios.',
     objectives: ['Identify key inputs needed to support cost estimation.', 'Structure cost assumptions in a consistent format.', 'Validate calculation logic and document how the utility should be used.'],
+    timeline: [
+  {
+    phase: '01',
+    title: 'Requirements Gathering',
+    description: 'Identified cost-estimation requirements across IAM, Network Security, Endpoint Security, and CyberOps.'
+  },
+  {
+    phase: '02',
+    title: 'Input & Assumption Definition',
+    description: 'Structured relevant inputs covering licensing, CAD currency conversion, FTE costs, and renewal dates.'
+  },
+  {
+    phase: '03',
+    title: 'Calculation Testing',
+    description: 'Supported unit testing and validation of calculation logic and input handling.'
+  },
+  {
+    phase: '04',
+    title: 'Documentation',
+    description: 'Prepared supporting documentation to improve clarity, consistency, and repeatability.'
+  }
+],
     approach: ['Contributed to requirements covering IAM, Network Security, Endpoint Security, and CyberOps.', 'Considered licensing, currency conversion to CAD, FTE costs, and renewal dates as relevant inputs.', 'Supported unit testing of calculations and input handling.', 'Prepared supporting documentation to improve clarity and repeatability.'],
     deliverables: ['Input and requirement definitions', 'Cost-factor and assumption documentation', 'Unit-testing and validation support', 'Usage and process documentation'],
     learning: 'The project highlighted how transparent assumptions, input validation, and clear documentation can improve consistency in estimation workflows.',
@@ -60,6 +82,28 @@ const projects = [
     tools: ['Microsoft Project', 'Work Breakdown Structure', 'KPI design', 'Stakeholder requirements', 'Project planning'],
     challenge: 'The organisation needed a structured annual-fund plan with clear work packages and indicators to help coordinate activities and monitor progress toward fundraising goals.',
     objectives: ['Translate project requirements into a practical plan.', 'Break the work into manageable and trackable activities.', 'Define indicators that could be used to review progress.'],
+    timeline: [
+  {
+    phase: '01',
+    title: 'Requirements Review',
+    description: 'Reviewed requirements across two departments to understand the organisation’s annual-fund planning needs.'
+  },
+  {
+    phase: '02',
+    title: 'Project Planning',
+    description: 'Developed a hierarchical Work Breakdown Structure (WBS) using Microsoft Project.'
+  },
+  {
+    phase: '03',
+    title: 'KPI Framework',
+    description: 'Defined eight KPIs to support progress monitoring and performance reviews.'
+  },
+  {
+    phase: '04',
+    title: 'Strategy Alignment',
+    description: 'Aligned the project plan with FY25 and FY26 fundraising targets of $15K and $25K.'
+  }
+],
     approach: ['Reviewed requirements across two departments to inform the strategy.', 'Built a hierarchical Work Breakdown Structure (WBS) in Microsoft Project.', 'Defined eight KPIs for monitoring project progress.', 'Considered compliance and accessibility requirements in the project approach.'],
     deliverables: ['Project plan and WBS', 'KPI framework', 'Fundraising target alignment for FY25 and FY26', 'Planning and coordination documentation'],
     learning: 'This project strengthened my ability to turn broad strategic goals into a structured plan with defined work packages, milestones, and measures.',
@@ -72,6 +116,28 @@ const projects = [
     tools: ['AI adoption planning', 'Risk assessment', 'Governance documentation', 'Change management', 'PHIPA/PIPEDA research'],
     challenge: 'Introducing AI in a service organisation requires more than selecting tools: adoption planning must account for privacy obligations, governance, risk, staff readiness, and practical usage guidance.',
     objectives: ['Frame an adoption approach around responsible use and organisational needs.', 'Identify governance and privacy considerations for planning.', 'Consider how policy and change support could help adoption.'],
+    timeline: [
+  {
+    phase: '01',
+    title: 'Organisational Readiness',
+    description: 'Considered organisational needs and readiness factors relevant to responsible AI adoption.'
+  },
+  {
+    phase: '02',
+    title: 'Governance & Policy Review',
+    description: 'Reviewed AI policy, governance, and responsible-use considerations.'
+  },
+  {
+    phase: '03',
+    title: 'Privacy & Risk Assessment',
+    description: 'Explored privacy and data-handling considerations, including PHIPA and PIPEDA, alongside adoption risks.'
+  },
+  {
+    phase: '04',
+    title: 'Roadmap & Change Recommendations',
+    description: 'Organised recommendations around governance, readiness, risk, and organisational change support.'
+  }
+],
     approach: ['Reviewed AI policy and governance considerations relevant to the organisation’s context.', 'Considered privacy and data-handling implications, including PHIPA and PIPEDA at a planning level.', 'Organised recommendations around risk, governance, readiness, and change support.'],
     deliverables: ['AI adoption roadmap recommendations', 'Governance and policy considerations', 'Privacy and risk discussion points', 'Change and readiness planning considerations'],
     learning: 'The project reinforced that AI adoption is a business change initiative as well as a technology decision, and that governance and privacy need to be considered early.',
