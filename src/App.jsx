@@ -8,50 +8,52 @@ import './App.css';
 
 const projects = [
   {
-    number: '01',
-    type: 'TECHNOLOGY TRANSFORMATION',
-    title: 'Cybersecurity Intake Portal Migration',
-    summary: 'Supported the migration of a Global Cybersecurity intake process to Jira Service Management, with a focus on clearer workflows, traceable requirements, validation, and operational visibility.',
-    outcome: '70%',
-    outcomeLabel: 'reported reduction in manual effort',
-    tools: ['Jira Service Management', 'JQL', 'Workflow automation', 'Testing & validation'],
-    details: [
-      'Documented 26 end-to-end use cases covering intake and workflow behaviours.',
-      'Supported workflow design, data validation, defect coordination, and implementation readiness.',
-      'Built and audited Jira automation rules and JQL queries for monitoring and overdue-item tracking.',
-      'Maintained project documentation, requirements, and test results to support knowledge transfer.'
-    ],
-    note: 'Sanitised case study: internal system details, customer information, and confidential artefacts are intentionally excluded.'
+    number: '01', type: 'TECHNOLOGY TRANSFORMATION', title: 'Cybersecurity M&A Intake Portal Migration',
+    summary: 'Supported the transition of a Global Cybersecurity M&A intake process to Jira Service Management, helping make requirements, workflow states, follow-up tasks, and overdue items easier to track.',
+    outcome: '26', outcomeLabel: 'end-to-end use cases documented',
+    tools: ['Jira Service Management', 'JQL', 'Workflow automation', 'Testing & validation', 'SharePoint'],
+    challenge: 'The intake process needed a more structured way to capture submissions, route work, track status, and make follow-up activities visible across the delivery lifecycle.',
+    objectives: ['Translate process and stakeholder needs into testable use cases.', 'Support consistent workflow handling and task follow-up.', 'Improve traceability through documentation, validation, and reporting.'],
+    approach: ['Documented 26 end-to-end use cases covering intake and workflow behaviour.', 'Supported configuration of issue fields, statuses, workflow rules, and automated follow-up tasks.', 'Used JQL and automation logic to support monitoring and overdue-item visibility.', 'Supported development testing, validation, defect coordination, and implementation readiness.'],
+    deliverables: ['Use-case and requirements documentation', 'Workflow and automation documentation', 'JQL queries and monitoring views', 'Test notes, validation records, and user/admin guidance'],
+    learning: 'The work reinforced the value of clear acceptance criteria, traceable requirements, and documentation that helps both users and administrators support a process after implementation.',
+    note: 'Sanitised professional case study. Internal system details, customer information, screenshots, and proprietary artefacts are intentionally excluded.'
   },
   {
-    number: '02',
-    type: 'BUSINESS ANALYSIS · COST ESTIMATION',
-    title: 'M&A Technology Integration Cost Utility',
-    summary: 'Contributed to requirements for a utility intended to structure technology integration cost inputs and support consistent comparison across merger and acquisition scenarios.',
-    outcome: '15%',
-    outcomeLabel: 'reported improvement in estimation accuracy',
-    tools: ['Requirements analysis', 'Excel', 'Data validation', 'Documentation'],
-    details: [
-      'Helped define requirements for cost inputs across technology areas including IAM, network security, endpoint security, and CyberOps.',
-      'Considered licensing costs, currency conversion, FTE costs, and renewal dates as inputs.',
-      'Supported validation of inputs, calculation logic, and outputs, along with supporting documentation.'
-    ],
-    note: 'Contribution focused on requirements and validation support; this is not presented as ownership of the full financial model.'
+    number: '02', type: 'BUSINESS ANALYSIS · COST ESTIMATION', title: 'M&A Technology Integration Cost Estimation Utility',
+    summary: 'Contributed to requirements and validation for a proposed utility to organise technology integration cost inputs across several security domains.',
+    outcome: '4', outcomeLabel: 'technology domains considered',
+    tools: ['Requirements analysis', 'Microsoft Excel', 'Data validation', 'Calculation testing', 'Documentation'],
+    challenge: 'Technology integration estimates can involve different input types and assumptions. The project explored a more structured approach to collecting and comparing cost factors for M&A scenarios.',
+    objectives: ['Identify key inputs needed to support cost estimation.', 'Structure cost assumptions in a consistent format.', 'Validate calculation logic and document how the utility should be used.'],
+    approach: ['Contributed to requirements covering IAM, Network Security, Endpoint Security, and CyberOps.', 'Considered licensing, currency conversion to CAD, FTE costs, and renewal dates as relevant inputs.', 'Supported unit testing of calculations and input handling.', 'Prepared supporting documentation to improve clarity and repeatability.'],
+    deliverables: ['Input and requirement definitions', 'Cost-factor and assumption documentation', 'Unit-testing and validation support', 'Usage and process documentation'],
+    learning: 'The project highlighted how transparent assumptions, input validation, and clear documentation can improve consistency in estimation workflows.',
+    note: 'My contribution focused on requirements, testing, and documentation support; this is not presented as ownership of the complete financial model or as a measured financial outcome.'
   },
   {
-    number: '03',
-    type: 'PROJECT PLANNING · STRATEGY',
-    title: 'Annual Fund Strategy — Midwest Mujeres',
-    summary: 'Academic/consulting project focused on planning an annual fundraising strategy, aligning departmental requirements, and defining work packages and performance indicators.',
-    outcome: '8',
-    outcomeLabel: 'KPIs included in the project plan',
-    tools: ['Work Breakdown Structure', 'KPI design', 'Stakeholder requirements', 'Project planning'],
-    details: [
-      'Analysed requirements across two departments to inform the fundraising strategy.',
-      'Created a hierarchical Work Breakdown Structure (WBS) and defined KPIs for tracking progress.',
-      'Considered relevant compliance and accessibility requirements within the project approach.'
-    ],
-    note: 'Academic/consulting project. Outcomes stated in the resume are project targets/results and should be interpreted in that context.'
+    number: '03', type: 'PROJECT PLANNING · NON-PROFIT STRATEGY', title: 'Annual Fund Strategy — Midwest Mujeres',
+    summary: 'Academic consulting project focused on shaping an annual fundraising plan, organising work packages, and defining performance indicators for progress tracking.',
+    outcome: '$15K → $25K', outcomeLabel: 'FY25 and FY26 fundraising targets',
+    tools: ['Microsoft Project', 'Work Breakdown Structure', 'KPI design', 'Stakeholder requirements', 'Project planning'],
+    challenge: 'The organisation needed a structured annual-fund plan with clear work packages and indicators to help coordinate activities and monitor progress toward fundraising goals.',
+    objectives: ['Translate project requirements into a practical plan.', 'Break the work into manageable and trackable activities.', 'Define indicators that could be used to review progress.'],
+    approach: ['Reviewed requirements across two departments to inform the strategy.', 'Built a hierarchical Work Breakdown Structure (WBS) in Microsoft Project.', 'Defined eight KPIs for monitoring project progress.', 'Considered compliance and accessibility requirements in the project approach.'],
+    deliverables: ['Project plan and WBS', 'KPI framework', 'Fundraising target alignment for FY25 and FY26', 'Planning and coordination documentation'],
+    learning: 'This project strengthened my ability to turn broad strategic goals into a structured plan with defined work packages, milestones, and measures.',
+    note: 'Academic/consulting project. The $15K and $25K figures are fundraising targets stated for FY25 and FY26, not a claim that those amounts were raised.'
+  },
+  {
+    number: '04', type: 'AI ADOPTION · GOVERNANCE & CHANGE', title: 'Eva’s Initiatives — AI Adoption Roadmap',
+    summary: 'Academic consulting work exploring a responsible AI adoption roadmap, with attention to organisational readiness, policy, privacy, governance, and risk.',
+    outcome: '4', outcomeLabel: 'roadmap lenses: readiness, policy, privacy, risk',
+    tools: ['AI adoption planning', 'Risk assessment', 'Governance documentation', 'Change management', 'PHIPA/PIPEDA research'],
+    challenge: 'Introducing AI in a service organisation requires more than selecting tools: adoption planning must account for privacy obligations, governance, risk, staff readiness, and practical usage guidance.',
+    objectives: ['Frame an adoption approach around responsible use and organisational needs.', 'Identify governance and privacy considerations for planning.', 'Consider how policy and change support could help adoption.'],
+    approach: ['Reviewed AI policy and governance considerations relevant to the organisation’s context.', 'Considered privacy and data-handling implications, including PHIPA and PIPEDA at a planning level.', 'Organised recommendations around risk, governance, readiness, and change support.'],
+    deliverables: ['AI adoption roadmap recommendations', 'Governance and policy considerations', 'Privacy and risk discussion points', 'Change and readiness planning considerations'],
+    learning: 'The project reinforced that AI adoption is a business change initiative as well as a technology decision, and that governance and privacy need to be considered early.',
+    note: 'Academic consulting project. This describes roadmap and research work, not a deployed AI system, legal advice, or a claim of regulatory certification.'
   }
 ];
 
@@ -70,8 +72,11 @@ function ProjectModal({ project, onClose }) {
         <p className="eyebrow">{project.type}</p>
         <h2 id="modal-title">{project.title}</h2>
         <p className="modal-summary">{project.summary}</p>
-        <h3>My contribution</h3>
-        <ul className="detail-list">{project.details.map((detail) => <li key={detail}><Check size={17} /> <span>{detail}</span></li>)}</ul>
+        <div className="case-study-section"><h3>Business challenge</h3><p>{project.challenge}</p></div>
+        <div className="case-study-section"><h3>Objectives</h3><ul className="detail-list">{project.objectives.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
+        <div className="case-study-section"><h3>Approach & contribution</h3><ul className="detail-list">{project.approach.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
+        <div className="case-study-section"><h3>Key deliverables</h3><ul className="detail-list">{project.deliverables.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
+        <div className="case-study-section"><h3>What I learned</h3><p>{project.learning}</p></div>
         <div className="modal-tools">{project.tools.map((tool) => <span className="tag" key={tool}>{tool}</span>)}</div>
         <p className="confidentiality-note"><ShieldCheck size={16} /> {project.note}</p>
       </section>
