@@ -63,6 +63,39 @@ const skills = [
   { title: 'Tools & Reporting', items: ['Jira & JQL', 'Microsoft Excel', 'Power BI', 'SharePoint', 'Power Automate', 'Microsoft Project', 'Python'] }
 ];
 
+function CaseStudyVisual({ project }) {
+  const visualTitle = ['INTAKE LIFECYCLE MAP', 'COST INPUT FRAMEWORK', 'PROJECT PLAN & KPI FRAMEWORK', 'RESPONSIBLE AI ADOPTION FRAMEWORK'][Number(project.number) - 1];
+  return (
+    <div className={`case-visual case-visual-${project.number}`}>
+      <div className="case-visual-head"><span>PROJECT VISUAL</span><strong>{visualTitle}</strong><span>ILLUSTRATIVE</span></div>
+      {project.number === '01' && <>
+        <div className="case-flow-label">INTAKE AND DELIVERY FLOW</div>
+        <div className="case-flow"><span>Submission</span><b>→</b><span>Triage & assignment</span><b>→</b><span>In progress</span></div>
+        <div className="case-branch"><i>On hold</i><b>↔</b><i>Reopened</i><b>→</b><i>Resolved / closed</i></div>
+        <div className="case-lanes"><div><b>REQUIREMENTS</b><span>26 use cases documented</span></div><div><b>WORKFLOW</b><span>Statuses · fields · automation</span></div><div><b>CONTROL</b><span>JQL · validation · documentation</span></div></div>
+      </>}
+      {project.number === '02' && <>
+        <div className="case-flow-label">INPUTS CONSIDERED FOR ESTIMATION</div>
+        <div className="cost-domains">{['IAM','NETWORK SECURITY','ENDPOINT SECURITY','CYBEROPS'].map(x=><span key={x}>{x}</span>)}</div>
+        <div className="cost-grid"><div><small>LICENSES</small><b>Subscription / quantity</b></div><div><small>PEOPLE</small><b>FTE cost assumptions</b></div><div><small>CURRENCY</small><b>CAD conversion</b></div><div><small>RENEWALS</small><b>Renewal date inputs</b></div></div>
+        <div className="cost-output"><span>STRUCTURED INPUTS</span><b>→</b><strong>ESTIMATION VIEW</strong><small>Illustrative structure · no financial values shown</small></div>
+      </>}
+      {project.number === '03' && <>
+        <div className="case-flow-label">PLANNING STRUCTURE</div>
+        <div className="wbs-root">Annual Fund Strategy</div><div className="wbs-connector" />
+        <div className="wbs-branches"><span>Planning</span><span>Engagement</span><span>Fundraising</span><span>Monitoring</span></div>
+        <div className="kpi-strip"><div><b>8</b><small>KPIs defined</small></div><div><b>$15K</b><small>FY25 target</small></div><div><b>$25K</b><small>FY26 target</small></div></div>
+      </>}
+      {project.number === '04' && <>
+        <div className="case-flow-label">ROADMAP CONSIDERATION AREAS</div>
+        <div className="ai-pillars">{[['01','READINESS'],['02','GOVERNANCE'],['03','PRIVACY'],['04','RISK']].map(([n,t])=><div key={n}><small>{n}</small><b>{t}</b></div>)}</div>
+        <div className="ai-foundation"><span>POLICY & USAGE GUIDANCE</span><b>↔</b><span>CHANGE & ADOPTION SUPPORT</span></div>
+        <p className="ai-footnote">Planning framework informed by PHIPA / PIPEDA considerations; not legal advice or a deployed AI solution.</p>
+      </>}
+    </div>
+  );
+}
+
 function ProjectModal({ project, onClose }) {
   if (!project) return null;
   return (
@@ -72,6 +105,7 @@ function ProjectModal({ project, onClose }) {
         <p className="eyebrow">{project.type}</p>
         <h2 id="modal-title">{project.title}</h2>
         <p className="modal-summary">{project.summary}</p>
+        <CaseStudyVisual project={project} />
         <div className="case-study-section"><h3>Business challenge</h3><p>{project.challenge}</p></div>
         <div className="case-study-section"><h3>Objectives</h3><ul className="detail-list">{project.objectives.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
         <div className="case-study-section"><h3>Approach & contribution</h3><ul className="detail-list">{project.approach.map((item) => <li key={item}><Check size={17} /> <span>{item}</span></li>)}</ul></div>
