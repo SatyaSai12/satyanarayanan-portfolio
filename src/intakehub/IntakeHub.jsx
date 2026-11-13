@@ -33,7 +33,9 @@ import {
   buildEmailPayload,
   sendNotificationEmail
 } from './emailService';
-
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+  
 const demoRequests = [
   {
     id: 'GCS-2026-001',
@@ -149,8 +151,8 @@ useEffect(() => {
   const loadRequestsFromDatabase = async () => {
     try {
       const response = await fetch(
-        'http://localhost:5000/api/requests'
-      );
+  `${API_BASE_URL}/api/requests`
+);
 
       if (!response.ok) {
         throw new Error('Unable to load requests from PostgreSQL.');
@@ -202,9 +204,8 @@ useEffect(() => {
   const loadAuditHistoryFromDatabase = async () => {
     try {
       const response = await fetch(
-        'http://localhost:5000/api/audit-history'
-      );
-
+  `${API_BASE_URL}/api/audit-history`
+);
       if (!response.ok) {
         throw new Error('Unable to load audit history from PostgreSQL.');
       }
@@ -699,7 +700,7 @@ const handleRequestSubmit = async (formData) => {
   // Step 6: Save the request through the PostgreSQL API
   try {
     const response = await fetch(
-      'http://localhost:5000/api/requests',
+  `${API_BASE_URL}/api/requests`,
       {
         method: 'POST',
         headers: {
@@ -805,7 +806,7 @@ const handleRequestUpdate = async (updatedData) => {
   // Save changes to PostgreSQL before updating frontend state
   try {
     const response = await fetch(
-      `http://localhost:5000/api/requests/${encodeURIComponent(updatedRequest.id)}`,
+      `${API_BASE_URL}/api/requests/${encodeURIComponent(updatedRequest.id)}`,
       {
         method: 'PUT',
         headers: {
@@ -835,8 +836,8 @@ return false;
     // Refresh audit history from PostgreSQL after a successful update
   try {
     const auditResponse = await fetch(
-      'http://localhost:5000/api/audit-history'
-    );
+  `${API_BASE_URL}/api/audit-history`
+);
 
     if (!auditResponse.ok) {
       throw new Error('Unable to refresh audit history.');
