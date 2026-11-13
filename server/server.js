@@ -4,17 +4,20 @@ import cors from 'cors';
 import pool from './db.js';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:5174',
+  'http://127.0.0.1:5174',
+  'https://satyanarayanan-portfolio.vercel.app'
+];
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    'http://localhost:5174',
-    'http://127.0.0.1:5174'
-  ]
+  origin: allowedOrigins
 }));
 
 // Shared database query: return fields in frontend camelCase format
@@ -72,8 +75,7 @@ app.get('/api/db-test', async (req, res) => {
       serverTime: result.rows[0].current_time
     });
   } catch (error) {
-    console.error('Database connection error:', error.message);
-
+    console.error('Database connection error details:', error);
     res.status(500).json({
       status: 'error',
       message: 'Database connection failed'
