@@ -1,0 +1,13 @@
+
+{
+  "rewrites": [
+    {
+      "source": "/intakehub",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/intakehub/:path*",
+      "destination": "/index.html"
+    }
+  ]
+}
