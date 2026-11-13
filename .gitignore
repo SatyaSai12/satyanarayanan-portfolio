@@ -3,3 +3,6 @@ dist/
 .env
 .env.local
 .DS_Store
+
+# IntakeHub local backups
+intakehub-backup*.json
