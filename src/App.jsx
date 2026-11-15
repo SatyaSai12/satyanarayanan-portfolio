@@ -8,6 +8,24 @@ import './App.css';
 
 const projects = [
   {
+    number: '05', type: 'FULL-STACK PRODUCT BUILD · WORKFLOW AUTOMATION', title: 'IntakeHub — Enterprise Intake & Workflow Automation Platform',
+    summary: 'Designed and built an independent full-stack portfolio application that demonstrates how enterprise teams can capture requests, apply structured triage, route work, manage approvals, and maintain an auditable delivery record.',
+    outcome: 'FULL-STACK', outcomeLabel: 'React · Node.js · Express · PostgreSQL',
+    tools: ['React', 'Node.js', 'Express', 'PostgreSQL', 'REST APIs', 'Vercel', 'Render', 'Neon'],
+    challenge: 'Intake processes can become difficult to coordinate when submissions, ownership, approvals, status updates, and supporting records are spread across disconnected channels. IntakeHub explores a centralised workflow for making request handling more consistent and visible.',
+    objectives: ['Provide a structured request-submission experience with field validation.', 'Demonstrate triage, team assignment, approval handling, and request lifecycle tracking.', 'Persist requests and audit history in PostgreSQL through a REST API.', 'Present operational information through dashboard and analytics views.'],
+    timeline: [
+      { phase: '01', title: 'Product & workflow design', description: 'Defined the request lifecycle, intake fields, triage considerations, assignment logic, approval paths, and governance needs.' },
+      { phase: '02', title: 'Frontend & workflow implementation', description: 'Built the React interface for dashboard, intake, request queue, notifications, workflow management, governance, analytics, and settings.' },
+      { phase: '03', title: 'Backend & data layer', description: 'Implemented Node.js and Express REST endpoints with PostgreSQL persistence, request updates, and audit-history recording.' },
+      { phase: '04', title: 'Testing & deployment', description: 'Tested workflow engines and API/database connectivity, then deployed the frontend on Vercel and backend on Render with Neon PostgreSQL.' }
+    ],
+    approach: ['Built request intake with required-field checks, target-date validation, and attachment filename/type constraints.', 'Implemented triage and assignment logic, including team routing and workload-aware assignment.', 'Added approval handling for selected requests, with approve/reject outcomes and recorded decisions.', 'Created API endpoints for request creation, retrieval, updates, and audit-history access.', 'Used database transactions to keep request updates and associated audit records together.', 'Added dashboard, analytics, notifications, workflow, and governance views to demonstrate operational oversight.'],
+    deliverables: ['React-based IntakeHub web application', 'Express REST API and PostgreSQL data model', 'Triage, assignment, and approval workflow modules', 'Request audit history and governance views', 'Deployment architecture: Vercel, Render, and Neon'],
+    learning: 'The build brought together product thinking, requirements translation, frontend development, API design, relational data modelling, validation, deployment, and the importance of clearly communicating what is automated, simulated, or still outside the prototype scope.',
+    note: 'Independent portfolio prototype using fictional demonstration data. It is not an RBC system and has no RBC integration. Notifications/email delivery are simulated; selected attachments store filenames rather than uploaded file contents. The prototype does not include production-grade authentication or enterprise identity integration. Dashboard figures may include illustrative demo values.'
+  },
+  {
     number: '01', type: 'TECHNOLOGY TRANSFORMATION', title: 'Cybersecurity M&A Intake Portal Migration',
     summary: 'Supported the transition of a Global Cybersecurity M&A intake process to Jira Service Management, helping make requirements, workflow states, follow-up tasks, and overdue items easier to track.',
     outcome: '26', outcomeLabel: 'end-to-end use cases documented',
@@ -152,7 +170,7 @@ const skills = [
 ];
 
 function CaseStudyVisual({ project }) {
-  const visualTitle = ['INTAKE LIFECYCLE MAP', 'COST INPUT FRAMEWORK', 'PROJECT PLAN & KPI FRAMEWORK', 'RESPONSIBLE AI ADOPTION FRAMEWORK'][Number(project.number) - 1];
+  const visualTitle = project.number === '05' ? 'INTAKEHUB PLATFORM ARCHITECTURE' : ['INTAKE LIFECYCLE MAP', 'COST INPUT FRAMEWORK', 'PROJECT PLAN & KPI FRAMEWORK', 'RESPONSIBLE AI ADOPTION FRAMEWORK'][Number(project.number) - 1];
   return (
     <div className={`case-visual case-visual-${project.number}`}>
       <div className="case-visual-head"><span>PROJECT VISUAL</span><strong>{visualTitle}</strong><span>ILLUSTRATIVE</span></div>
@@ -179,6 +197,12 @@ function CaseStudyVisual({ project }) {
         <div className="ai-pillars">{[['01','READINESS'],['02','GOVERNANCE'],['03','PRIVACY'],['04','RISK']].map(([n,t])=><div key={n}><small>{n}</small><b>{t}</b></div>)}</div>
         <div className="ai-foundation"><span>POLICY & USAGE GUIDANCE</span><b>↔</b><span>CHANGE & ADOPTION SUPPORT</span></div>
         <p className="ai-footnote">Planning framework informed by PHIPA / PIPEDA considerations; not legal advice or a deployed AI solution.</p>
+      </>}
+      {project.number === '05' && <>
+        <div className="case-flow-label">INTAKEHUB APPLICATION ARCHITECTURE</div>
+        <div className="case-flow"><span>React UI</span><b>→</b><span>Express REST API</span><b>→</b><span>PostgreSQL</span></div>
+        <div className="case-branch"><i>Triage & assignment</i><b>→</b><i>Approval workflow</i><b>→</b><i>Audit history</i></div>
+        <div className="case-lanes"><div><b>FRONTEND</b><span>Intake · Queue · Analytics</span></div><div><b>BACKEND</b><span>Validation · REST endpoints</span></div><div><b>DEPLOYMENT</b><span>Vercel · Render · Neon</span></div></div>
       </>}
     </div>
   );
@@ -311,27 +335,105 @@ function App() {
 </div>
               <div className="featured-tags">{projects[0].tools.slice(0, 4).map((tool) => <span key={tool}>{tool}</span>)}</div>
               <button className="featured-button" onClick={() => setActiveProject(projects[0])}>Explore case study <ArrowUpRight size={18} /></button>
-              <p className="featured-note"><ShieldCheck size={15} /> Sanitised case study; no confidential system screenshots or internal data.</p>
+              <div className="featured-tags"><a href="https://satyanarayanan-portfolio.vercel.app/intakehub" target="_blank" rel="noreferrer">Live demo ↗</a><a href="https://github.com/SatyaSai12/satyanarayanan-portfolio" target="_blank" rel="noreferrer">GitHub repository ↗</a></div>
+              <p className="featured-note"><ShieldCheck size={15} /> Independent prototype with fictional data; not an RBC system.</p>
             </div>
-            <div className="featured-visual" aria-label="Illustrative Jira workflow and project tracking dashboard">
-              <div className="visual-window"><div className="visual-topbar"><span>PROJECT DELIVERY OVERVIEW</span><span>ILLUSTRATIVE VIEW</span></div><div className="visual-kpis"><div><b>26</b><small>USE CASES</small></div><div><b>5</b><small>WORKFLOW STAGES</small></div><div><b>4</b><small>KEY WORKSTREAMS</small></div></div><div className="visual-content"><div className="visual-chart"><div className="visual-chart-title">INTAKE WORKFLOW</div><div className="workflow-flow"><span>Submitted</span><i>→</i><span>Assigned</span><i>→</i><span>In progress</span></div><div className="workflow-flow second"><span>On hold</span><i>↔</i><span>Reopened</span><i>→</i><span>Resolved</span></div><div className="visual-chart-title chart-spaced">DELIVERY TRACKING</div><div className="bar-set"><i style={{height:'72%'}}/><i style={{height:'90%'}}/><i style={{height:'58%'}}/><i style={{height:'82%'}}/><i style={{height:'66%'}}/><i style={{height:'96%'}}/></div></div><aside className="visual-side"><b>PROJECT CONTROLS</b><span><i/> Requirements</span><span><i/> Workflow</span><span><i/> Validation</span><span><i/> Documentation</span><div className="visual-progress"><small>TRACEABILITY</small><strong>End-to-end</strong><div><i/></div></div></aside></div></div>
-              <span className="visual-caption">Conceptual visual · not an actual RBC system screenshot</span>
+            <div className="featured-visual" aria-label="Illustrative IntakeHub application architecture">
+              <CaseStudyVisual project={projects[0]} />
+              <span className="visual-caption">Conceptual architecture visual · independent portfolio prototype</span>
             </div>
           </article>
-          <div className="project-gallery">{projects.slice(1).map((project, index) => <article className="gallery-card" key={project.number}><div className={`gallery-visual gallery-visual-${index+1}`}><div className="gallery-window"><div className="gallery-window-head">{index === 0 ? 'COST ESTIMATION FRAMEWORK' : index === 1 ? 'ANNUAL FUND PROJECT PLAN' : 'AI ADOPTION ROADMAP'}</div>{index === 0 ? <><div className="mini-metric-row"><b>IAM</b><b>NETWORK</b><b>ENDPOINT</b><b>CYBEROPS</b></div><div className="mini-table"><i/><i/><i/><i/><i/></div></> : index === 1 ? <><div className="mini-timeline"><i/><i/><i/><i/><i/></div><div className="mini-kpi-row"><b>8 KPIs</b><b>FY25 → FY26</b></div></> : <><div className="roadmap-nodes"><i>READINESS</i><i>GOVERNANCE</i><i>PRIVACY</i><i>RISK</i></div><div className="mini-table"><i/><i/><i/></div></>}</div></div><div className="gallery-card-body">
-  <p>{project.type}</p>
-  <h3>{project.title}</h3>
-  <span>{project.summary}</span>
+          
+<div className="project-gallery">
+  {projects.slice(1).map((project, index) => (
+    <article className="gallery-card" key={project.number}>
+      <div className={`gallery-visual gallery-visual-${index + 1}`}>
+        <div className="gallery-window">
+          <div className="gallery-window-head">
+            {project.number === '02'
+              ? 'COST ESTIMATION FRAMEWORK'
+              : project.number === '03'
+                ? 'ANNUAL FUND PROJECT PLAN'
+                : project.number === '04'
+                  ? 'AI ADOPTION ROADMAP'
+                  : 'CYBERSECURITY INTAKE LIFECYCLE'}
+          </div>
 
-  <div className="gallery-impact">
-    <strong>{project.outcome}</strong>
-    <span>{project.outcomeLabel}</span>
-  </div>
+          {project.number === '02' && (
+            <>
+              <div className="mini-metric-row">
+                <b>IAM</b>
+                <b>NETWORK</b>
+                <b>ENDPOINT</b>
+                <b>CYBEROPS</b>
+              </div>
+              <div className="mini-table">
+                <i /><i /><i /><i /><i />
+              </div>
+            </>
+          )}
 
-  <button className="details-link" onClick={() => setActiveProject(project)}>
-    View case study <ArrowRight size={15}/>
-  </button>
-</div></article>)}</div>
+          {project.number === '03' && (
+            <>
+              <div className="mini-timeline">
+                <i /><i /><i /><i /><i />
+              </div>
+              <div className="mini-kpi-row">
+                <b>8 KPIs</b>
+                <b>FY25 → FY26</b>
+              </div>
+            </>
+          )}
+
+          {project.number === '04' && (
+            <>
+              <div className="roadmap-nodes">
+                <i>READINESS</i>
+                <i>GOVERNANCE</i>
+                <i>PRIVACY</i>
+                <i>RISK</i>
+              </div>
+              <div className="mini-table">
+                <i /><i /><i />
+              </div>
+            </>
+          )}
+
+          {project.number === '05' && (
+            <>
+              <div className="mini-timeline">
+                <i /><i /><i />
+              </div>
+              <div className="mini-kpi-row">
+                <b>26 USE CASES</b>
+                <b>JIRA SERVICE MANAGEMENT</b>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      <div className="gallery-card-body">
+        <p>{project.type}</p>
+        <h3>{project.title}</h3>
+        <span>{project.summary}</span>
+
+        <div className="gallery-impact">
+          <strong>{project.outcome}</strong>
+          <span>{project.outcomeLabel}</span>
+        </div>
+
+        <button
+          className="details-link"
+          onClick={() => setActiveProject(project)}
+        >
+          View case study <ArrowRight size={15} />
+        </button>
+      </div>
+    </article>
+  ))}
+</div>
+
           <p className="project-disclaimer"><ShieldCheck size={16} /> Visuals are illustrative representations created for this portfolio, not screenshots of internal systems or confidential project artefacts.</p>
         </section>
         <section className="skills-section" id="skills"><div className="section-wrap"><div className="section-heading section-heading-wide"><p className="eyebrow">04 / CAPABILITIES</p><h2>How I help teams <span>move forward.</span></h2></div><div className="skills-grid">{skills.map((group, index) => <article className="skill-card" key={group.title}><span className="skill-index">0{index + 1}</span><h3>{group.title}</h3><div className="skill-items">{group.items.map((item) => <span key={item}>{item}</span>)}</div></article>)}</div><p className="skills-footnote">Skills reflect my education and experience; tool proficiency varies by area and project.</p></div></section>
