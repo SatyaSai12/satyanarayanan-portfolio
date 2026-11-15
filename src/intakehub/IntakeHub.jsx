@@ -113,9 +113,31 @@ function loadSavedRequests() {
     return [];
   }
 }
+const SETTINGS_STORAGE_KEY = 'intakehub.settings';
 
+const DEFAULT_SETTINGS = {
+  displayName: 'Demo Administrator',
+  role: 'Workspace Administrator',
+  workspaceName: 'Enterprise Intake Workspace',
+  timezone: 'Asia/Kolkata',
+  compactTables: false,
+  showDashboardSummary: true
+};
 function IntakeHub() {
   const [activePage, setActivePage] = useState('Overview');
+  const [settings, setSettings] = useState(() => {
+  try {
+    const saved = localStorage.getItem(SETTINGS_STORAGE_KEY);
+    return saved
+      ? { ...DEFAULT_SETTINGS, ...JSON.parse(saved) }
+      : DEFAULT_SETTINGS;
+  } catch {
+    return DEFAULT_SETTINGS;
+  }
+});
+
+const [settingsSaved, setSettingsSaved] = useState(false);
+const [apiHealth, setApiHealth] = useState('Not checked');
   const [menuOpen, setMenuOpen] = useState(false);
   const [submittedRequests, setSubmittedRequests] = useState(loadSavedRequests);
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -1166,7 +1188,8 @@ const handleApprovalDecision = async (decision, comments) => {
 
               {activePage === 'Overview' && (
                 <>
-                  <div className="hub-metric-grid">
+                  {settings.showDashboardSummary && (
+      <div className="hub-metric-grid">
                     <Metric
                       icon={ClipboardList}
                       label="Total requests"
@@ -1192,7 +1215,7 @@ const handleApprovalDecision = async (decision, comments) => {
                       note="Illustrative completion data"
                     />
                   </div>
-
+                     )}
                   <div className="hub-panel-grid">
                     <section className="hub-panel hub-requests-panel">
                       <div className="hub-panel-heading">
@@ -1209,6 +1232,7 @@ const handleApprovalDecision = async (decision, comments) => {
                       </div>
 
                       <RequestTable
+                      compact={settings.compactTables}
   requests={allRequests.slice(0, 6)}
   onSelectRequest={(request) => {
     setSelectedRequest(request);
@@ -1305,6 +1329,7 @@ const handleApprovalDecision = async (decision, comments) => {
                   )}
 
                   <RequestTable
+                  compact={settings.compactTables}
  requests={queueFilteredRequests}
   onSelectRequest={(request) => {
     setSelectedRequest(request);
@@ -2752,6 +2777,261 @@ const handleApprovalDecision = async (decision, comments) => {
       </table>
     </div>
   </section>
+
+) : activePage === 'Settings' ? (
+  <section className="hub-panel">
+    <div className="hub-panel-heading">
+      <div>
+        <h2>Workspace Settings</h2>
+        <p>Manage your IntakeHub demo workspace and preferences.</p>
+      </div>
+    </div>
+
+    <div className="settings-grid">
+
+      {/* PROFILE & WORKSPACE */}
+      <div className="analytics-panel settings-card">
+        <h3>Profile & Workspace</h3>
+        <p>Personalise your demonstration workspace.</p>
+
+        <label className="hub-field">
+          Display name
+          <input
+            value={settings.displayName}
+            onChange={(event) => {
+              setSettings((previous) => ({
+                ...previous,
+                displayName: event.target.value
+              }));
+              setSettingsSaved(false);
+            }}
+          />
+        </label>
+
+        <label className="hub-field">
+          Workspace role
+          <input
+            value={settings.role}
+            onChange={(event) => {
+              setSettings((previous) => ({
+                ...previous,
+                role: event.target.value
+              }));
+              setSettingsSaved(false);
+            }}
+          />
+        </label>
+
+        <label className="hub-field">
+          Workspace name
+          <input
+            value={settings.workspaceName}
+            onChange={(event) => {
+              setSettings((previous) => ({
+                ...previous,
+                workspaceName: event.target.value
+              }));
+              setSettingsSaved(false);
+            }}
+          />
+        </label>
+
+        <label className="hub-field">
+          Time zone
+          <select
+            value={settings.timezone}
+            onChange={(event) => {
+              setSettings((previous) => ({
+                ...previous,
+                timezone: event.target.value
+              }));
+              setSettingsSaved(false);
+            }}
+          >
+            <option value="Asia/Kolkata">India Standard Time</option>
+            <option value="America/Toronto">Eastern Time</option>
+            <option value="Europe/London">United Kingdom</option>
+            <option value="UTC">UTC</option>
+          </select>
+        </label>
+
+        <button
+          className="hub-primary-button"
+          onClick={() => {
+            localStorage.setItem(
+              SETTINGS_STORAGE_KEY,
+              JSON.stringify(settings)
+            );
+            setSettingsSaved(true);
+          }}
+        >
+          Save workspace settings
+        </button>
+
+        {settingsSaved && (
+          <p className="settings-success">
+            Settings saved successfully.
+          </p>
+        )}
+      </div>
+
+      {/* DISPLAY PREFERENCES */}
+      <div className="analytics-panel settings-card">
+        <h3>Display Preferences</h3>
+        <p>Configure how information appears in your workspace.</p>
+
+        <label className="settings-toggle">
+          <span>
+            <strong>Compact request tables</strong>
+            <small>Display request rows with reduced spacing.</small>
+          </span>
+          <input
+            type="checkbox"
+            checked={settings.compactTables}
+            onChange={(event) => {
+              setSettings((previous) => ({
+                ...previous,
+                compactTables: event.target.checked
+              }));
+              setSettingsSaved(false);
+            }}
+          />
+        </label>
+
+        <label className="settings-toggle">
+          <span>
+            <strong>Dashboard summary</strong>
+            <small>Display the dashboard summary section.</small>
+          </span>
+          <input
+            type="checkbox"
+            checked={settings.showDashboardSummary}
+            onChange={(event) => {
+              setSettings((previous) => ({
+                ...previous,
+                showDashboardSummary: event.target.checked
+              }));
+              setSettingsSaved(false);
+            }}
+          />
+        </label>
+      </div>
+
+      {/* WORKFLOW CONFIGURATION */}
+      <div className="analytics-panel settings-card">
+        <h3>Workflow Configuration</h3>
+        <p>Review the active prototype workflow capabilities.</p>
+
+        <div className="settings-info-row">
+          <span>Request classification</span>
+          <strong>Rule-based</strong>
+        </div>
+
+        <div className="settings-info-row">
+          <span>Team assignment</span>
+          <strong>Automated</strong>
+        </div>
+
+        <div className="settings-info-row">
+          <span>Approval handling</span>
+          <strong>Configured rules</strong>
+        </div>
+
+        <div className="settings-info-row">
+          <span>Audit history</span>
+          <strong>Enabled</strong>
+        </div>
+
+        <p className="settings-note">
+          Workflow and approval rules are maintained in the
+          application configuration files. This section is
+          informational and does not modify those rules.
+        </p>
+      </div>
+
+      {/* SYSTEM INFORMATION */}
+      <div className="analytics-panel settings-card">
+        <h3>System Information</h3>
+        <p>View application details and check API connectivity.</p>
+
+        <div className="settings-info-row">
+          <span>Application</span>
+          <strong>IntakeHub</strong>
+        </div>
+
+        <div className="settings-info-row">
+          <span>Frontend</span>
+          <strong>React + Vite</strong>
+        </div>
+
+        <div className="settings-info-row">
+          <span>Database technology</span>
+          <strong>PostgreSQL</strong>
+        </div>
+
+        <div className="settings-info-row">
+          <span>API status</span>
+          <strong>{apiHealth}</strong>
+        </div>
+
+        <button
+          className="hub-primary-button"
+          onClick={async () => {
+            setApiHealth('Checking...');
+
+            try {
+              const response = await fetch(
+                `${API_BASE_URL}/api/health`
+              );
+
+              if (!response.ok) {
+                throw new Error('API unavailable');
+              }
+
+              setApiHealth('Connected');
+            } catch {
+              setApiHealth('Unavailable');
+            }
+          }}
+        >
+          Check API Connection
+        </button>
+      </div>
+
+      {/* DATA MANAGEMENT */}
+      <div className="analytics-panel settings-card settings-danger-card">
+        <h3>Local Data Management</h3>
+
+        <p>
+          Clear notifications and simulated email delivery records
+          stored in this browser.
+        </p>
+
+        <p className="settings-note">
+          This does not delete submitted requests or audit history
+          stored in PostgreSQL.
+        </p>
+
+        <button
+          className="settings-danger-button"
+          onClick={() => {
+            const confirmed = window.confirm(
+              'Clear local notifications and simulated email logs? ' +
+              'PostgreSQL requests and audit history will not be deleted.'
+            );
+
+            if (confirmed) {
+              setNotifications([]);
+              setEmailLogs([]);
+            }
+          }}
+        >
+          Clear Local Notifications & Email Logs
+        </button>
+      </div>
+
+    </div>
+  </section>
 ) : (
   activePage !== 'Overview' &&
   activePage !== 'Request queue' &&
@@ -2762,11 +3042,9 @@ const handleApprovalDecision = async (decision, comments) => {
       <div className="hub-placeholder-icon">
         <Workflow size={28} />
       </div>
+
       <h2>{activePage}</h2>
-      <p>
-        This module is the next stage of the IntakeHub prototype.
-        We'll implement its functionality step by step.
-      </p>
+      <p>This module is not available.</p>
     </section>
   )
 )}
@@ -2798,9 +3076,9 @@ function Metric({ icon: Icon, label, value, note }) {
   );
 }
 
-function RequestTable({ requests, onSelectRequest }) {
+function RequestTable({ requests, onSelectRequest, compact = false }) {
   return (
-    <div className="hub-table-wrap">
+    <div className={`hub-table-wrap ${compact ? 'hub-table-wrap-compact' : ''}`}>
       <table className="hub-table">
         <thead>
           <tr>

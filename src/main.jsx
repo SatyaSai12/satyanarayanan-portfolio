@@ -6,18 +6,19 @@ import IntakeHub from './intakehub/IntakeHub.jsx';
 import ProjectHub from './ProjectHub.jsx';
 import './index.css';
 
-const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+const currentPath = window.location.pathname;
 
-let page;
-
-if (currentPath === '/intakehub') {
-  page = <IntakeHub />;
-} else if (currentPath === '/intakehub-project') {
-  page = <ProjectHub />;
-} else {
-  page = <App />;
-}
+const isIntakeHub = currentPath === '/intakehub';
+const isProjectHub = currentPath === '/intakehub-project';
 
 createRoot(document.getElementById('root')).render(
-  <React.StrictMode>{page}</React.StrictMode>
+  <React.StrictMode>
+    {isIntakeHub ? (
+      <IntakeHub />
+    ) : isProjectHub ? (
+      <ProjectHub />
+    ) : (
+      <App />
+    )}
+  </React.StrictMode>
 );
