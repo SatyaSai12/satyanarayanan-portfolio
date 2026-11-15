@@ -335,7 +335,11 @@ function App() {
 </div>
               <div className="featured-tags">{projects[0].tools.slice(0, 4).map((tool) => <span key={tool}>{tool}</span>)}</div>
               <button className="featured-button" onClick={() => setActiveProject(projects[0])}>Explore case study <ArrowUpRight size={18} /></button>
-              <div className="featured-tags"><a href="https://satyanarayanan-portfolio.vercel.app/intakehub" target="_blank" rel="noreferrer">Live demo ↗</a><a href="https://github.com/SatyaSai12/satyanarayanan-portfolio" target="_blank" rel="noreferrer">GitHub repository ↗</a></div>
+              <div className="featured-tags">
+  <a href="https://satyanarayanan-portfolio.vercel.app/intakehub" target="_blank" rel="noreferrer">Live demo ↗</a>
+  <a href="https://satyanarayanan-portfolio.vercel.app/intakehub-project" target="_blank" rel="noreferrer">Project hub ↗</a>
+  <a href="https://github.com/SatyaSai12/satyanarayanan-portfolio" target="_blank" rel="noreferrer">GitHub repository ↗</a>
+</div>
               <p className="featured-note"><ShieldCheck size={15} /> Independent prototype with fictional data; not an RBC system.</p>
             </div>
             <div className="featured-visual" aria-label="Illustrative IntakeHub application architecture">
