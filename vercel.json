@@ -8,6 +8,14 @@
     {
       "source": "/intakehub/:path*",
       "destination": "/index.html"
+    },
+    {
+      "source": "/intakehub-project",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/intakehub-project/:path*",
+      "destination": "/index.html"
     }
   ]
 }
